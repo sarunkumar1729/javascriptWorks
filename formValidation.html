@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Complex Form Validation</h1>
+    <form id="myForm" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <span id="nameError" class="error"></span><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <span id="emailError" class="error"></span><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="passwordError" class="error"></span><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword">
+        <span id="confirmPasswordError" class="error"></span><br>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age">
+        <span id="ageError" class="error"></span><br>
+
+        <label for="terms">Agree to Terms:</label>
+        <input type="checkbox" id="terms" name="terms">
+        <span id="termsError" class="error"></span><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var age = document.getElementById("age").value;
+            var terms = document.getElementById("terms").checked;
+
+            var nameError = document.getElementById("nameError");
+            var emailError = document.getElementById("emailError");
+            var passwordError = document.getElementById("passwordError");
+            var confirmPasswordError = document.getElementById("confirmPasswordError");
+            var ageError = document.getElementById("ageError");
+            var termsError = document.getElementById("termsError");
+
+            nameError.innerHTML = "";
+            emailError.innerHTML = "";
+            passwordError.innerHTML = "";
+            confirmPasswordError.innerHTML = "";
+            ageError.innerHTML = "";
+            termsError.innerHTML = "";
+
+            var valid = true;
+
+            if (name === "") {
+                nameError.innerHTML = "Name is required";
+                valid = false;
+            }
+
+            if (email === "") {
+                emailError.innerHTML = "Email is required";
+                valid = false;
+            } else if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                emailError.innerHTML = "Invalid email format";
+                valid = false;
+            }
+
+            if (password === "") {
+                passwordError.innerHTML = "Password is required";
+                valid = false;
+            } else if (password.length < 6) {
+                passwordError.innerHTML = "Password must be at least 6 characters long";
+                valid = false;
+            }
+
+            if (confirmPassword === "") {
+                confirmPasswordError.innerHTML = "Confirm password is required";
+                valid = false;
+            } else if (password !== confirmPassword) {
+                confirmPasswordError.innerHTML = "Passwords do not match";
+                valid = false;
+            }
+
+            if (age === "" || isNaN(age) || parseInt(age) < 18) {
+                ageError.innerHTML = "Age must be a number and at least 18";
+                valid = false;
+            }
+
+            if (!terms) {
+                termsError.innerHTML = "You must agree to the terms";
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
+</body>
+
+</html>
