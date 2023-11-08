@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body style="text-align:center">
+
+	<div id="counter">
+		
+	</div>
+
+	<script>
+		let counts = setInterval(updated);
+		let upto = 0;
+		function updated() {
+			let count = document.getElementById("counter");
+			count.innerHTML = ++upto;
+			if (upto === 100) {
+				clearInterval(counts);
+			}
+		}
+	</script>
+</body>
+</html>
