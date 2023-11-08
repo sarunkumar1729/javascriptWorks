@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1 id="num"></h1>
+    <button onclick="myanimation()">Click Me</button>
+
+    <script>
+        function myanimation() {
+            let id = null;
+            const elem = document.getElementById("num");
+            let x = 0;
+            clearInterval(id);
+            id = setInterval(frame, 5);
+            function frame() {
+                if (x == 350) {
+                    clearInterval(id);
+                } else {
+                    x++;
+                    elem.innerHTML = x;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
