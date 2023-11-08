@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 50px;
+            letter-spacing: 1px;
+            color:#fc3;
+        }
+
+        h1 span {
+            display: inline-block;
+            animation: slideLeft 1.5s forwards;
+            opacity: 0;
+            transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(200px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="animation">
+            TECHOLAS TECHNOLOGIES
+        </h1>
+    </div>
+    <script>
+        var spanText = function spanText(text) {
+            var string = text.innerText;
+            var spaned = '';
+            for (var i = 0; i < string.length; i++) {
+                if (string.substring(i, i + 1) === ' ') spaned += string.substring(i, i + 1);
+                else spaned += '<span>' + string.substring(i, i + 1) + '</span>';
+            }
+            text.innerHTML = spaned;
+        }
+
+        var headline = document.querySelector("h1");
+
+        spanText(headline);
+
+        let animations = document.querySelectorAll('.animation');
+
+        animations.forEach(animation => {
+            let letters = animation.querySelectorAll('span');
+            letters.forEach((letter, i) => {
+                letter.style.animationDelay = (i * 0.1) + 's';
+            })
+        })
+
+    </script>
+</body>
+
+</html>
