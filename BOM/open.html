@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window.open() Example</title>
+    <script>
+        function openNewWindow() {
+            // Open a new window with specified URL and window features
+            // The first parameter is the URL, and the second parameter is the window name (can be left empty)
+            // The third parameter is a string containing window features like width, height, etc.
+            window.open('https://www.example.com', '_blank', 'width=600,height=400');
+        }
+    </script>
+</head>
+
+<body>
+
+    <button onclick="openNewWindow()">Open New Window</button>
+
+</body>
+
+</html>

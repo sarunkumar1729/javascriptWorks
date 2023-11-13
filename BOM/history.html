@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History API Example</title>
+</head>
+<body>
+
+  <h1>History API Example</h1>
+  
+  <button onclick="goBack()">Go Back</button>
+  <button onclick="goForward()">Go Forward</button>
+  <button onclick="goToSpecificPage()">Go to Page 2</button>
+
+  <script>
+    function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        console.log("Cannot go back. No history available.");
+      }
+    }
+
+    function goForward() {
+      if (window.history.length > 1) {
+        window.history.forward();
+      } else {
+        console.log("Cannot go forward. No history available.");
+      }
+    }
+
+    function goToSpecificPage() {
+      // Assuming there is a page at index 2 in the session history
+      if (window.history.length > 2) {
+        window.history.go(2);
+      } else {
+        console.log("Cannot go to the specific page. Insufficient history.");
+      }
+    }
+  </script>
+
+</body>
+</html>
