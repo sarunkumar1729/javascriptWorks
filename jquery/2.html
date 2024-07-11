@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Effects Example</title>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        margin: 20px;
+        padding: 20px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Fade effects
+        $("#fade-in").click(function() {
+            $(".box").fadeIn();
+        });
+        $("#fade-out").click(function() {
+            $(".box").fadeOut();
+        });
+
+        // Slide effects
+        $("#slide-down").click(function() {
+            $(".box").slideDown();
+        });
+        $("#slide-up").click(function() {
+            $(".box").slideUp();
+        });
+
+        // Toggle effects
+        $("#toggle").click(function() {
+            $(".box").toggle();
+        });
+
+        // Animate effects
+        $("#animate").click(function() {
+            $(".box").animate({
+                width: "toggle",
+                height: "toggle",
+                opacity: "toggle"
+            }, 1000);
+        });
+    });
+</script>
+</head>
+<body>
+    <button id="fade-in">Fade In</button>
+    <button id="fade-out">Fade Out</button>
+    <button id="slide-down">Slide Down</button>
+    <button id="slide-up">Slide Up</button>
+    <button id="toggle">Toggle</button>
+    <button id="animate">Animate</button>
+    
+    <div class="box">jQuery Effects Example</div>
+</body>
+</html>

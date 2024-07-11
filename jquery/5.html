@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery .attr() Example</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#show-attr').on('click', function() {
+        var hrefAttr = $('#example-link').attr('href');
+        alert('Href Attribute: ' + hrefAttr);
+    });
+
+    $('#set-attr').on('click', function() {
+        $('#example-link').attr('href', 'https://example.com');
+    });
+});
+</script>
+</head>
+<body>
+
+<a href="#" id="example-link">Example Link</a>
+
+<button id="show-attr">Show Href Attribute</button>
+<button id="set-attr">Set Href Attribute</button>
+
+</body>
+</html>

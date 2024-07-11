@@ -50,7 +50,7 @@
             font-size: 16px;
         }
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: red;
         }
         .error {
             color: red;
@@ -173,6 +173,7 @@
 
             for (let i = 0; i < password.length; i++) {
                 let char = password[i];
+                // the unicode value for A is 65 and of Z is 90.
                 if (char >= 'A' && char <= 'Z') {
                     hasUpperCase = true;
                 } else if (char >= 'a' && char <= 'z') {

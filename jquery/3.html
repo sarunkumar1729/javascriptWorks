@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery .text() Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#show-text").on("click", function () {
+          let textContent = $("#example-text").text(); // getting
+          alert("Text Content: " + textContent);
+        });
+
+        $("#change-text").on("click", function () {
+          $("#example-text").text("New Text Content"); // setting
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p id="example-text">This is some example text.</p>
+
+    <button id="show-text">Show Text</button>
+    <button id="change-text">Change Text</button>
+  </body>
+</html>
