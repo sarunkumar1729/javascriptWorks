@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>jQuery .val() Example</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('#show-value').on('click', function() {
-        var inputVal = $('#example-input').val();
-        alert('Input Value: ' + inputVal);
-    });
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery .val() Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#show-value").on("click", function () {
+          let inputVal = $("#example-input").val(); // getting
+          alert("Input Value: " + inputVal);
+        });
 
-    $('#set-value').on('click', function() {
-        $('#example-input').val('New Value');
-    });
-});
-</script>
-</head>
-<body>
+        $("#set-value").on("click", function () {
+          $("#example-input").val("New Value"); // setting value
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="example-input" value="Initial Value" />
 
-<input type="text" id="example-input" value="Initial Value">
-
-<button id="show-value">Show Value</button>
-<button id="set-value">Set Value</button>
-
-</body>
+    <button id="show-value">Show Value</button>
+    <button id="set-value">Set Value</button>
+  </body>
 </html>

@@ -116,9 +116,9 @@ body {
       $(document).ready(function() {
     // Open modal on image click
     $('.gallery-img').on('click', function() {
-        var modal = $('#myModal');
-        var modalImg = $('#modal-img');
-        var captionText = $('#caption');
+        let modal = $('#myModal');
+        let modalImg = $('#modal-img');
+        let captionText = $('#caption');
         modal.css('display', 'block');
         modalImg.attr('src', $(this).attr('src'));
         captionText.html($(this).attr('alt'));
