@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Information</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    /* Basic styling for demonstration */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+
+    #symbol-input {
+        width: 200px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    #load-btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #stock-result {
+        margin-top: 20px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Stock Information</h2>
+    <input type="text" id="symbol-input" placeholder="Enter stock symbol (e.g., AAPL)">
+    <button id="load-btn">Get Stock Info</button>
+    <div id="stock-result"></div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#load-btn").click(function() {
+            var symbol = $("#symbol-input").val().toUpperCase();
+            if (symbol.trim() === "") {
+                alert("Please enter a stock symbol.");
+                return;
+            }
+
+            var apiKey = "B6JVML57WYGR70JZ"; // Replace with your Alpha Vantage API key
+            var apiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=" + apiKey;
+
+            $.ajax({
+                url: apiUrl,
+                method: "GET",
+                dataType: "json",
+                success: function(data) {
+                    if (data.hasOwnProperty("Global Quote")) {
+                        let symbol = data["Global Quote"]["01. symbol"];
+                        let price = parseFloat(data["Global Quote"]["05. price"]).toFixed(2);
+                        let change = parseFloat(data["Global Quote"]["09. change"]).toFixed(2);
+                        let changePercent = parseFloat(data["Global Quote"]["10. change percent"]).toFixed(2);
+
+                        let stockInfo = "<p>Symbol: " + symbol + "</p><p>Price: $" + price + "</p><p>Change: $" + change + " (" + changePercent + "%)</p>";
+                        $("#stock-result").html(stockInfo);
+                    } else {
+                        $("#stock-result").html("Stock symbol not found. Please enter a valid symbol.");
+                    }
+                },
+                error: function() {
+                    $("#stock-result").html("Error fetching stock data. Please try again later.");
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

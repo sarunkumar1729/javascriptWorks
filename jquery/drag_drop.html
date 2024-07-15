@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drag and Drop Example</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+    /* Styling for the draggable and droppable elements */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+
+    .draggable-item {
+        width: 150px;
+        height: 150px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        cursor: move;
+        margin: 10px;
+    }
+
+    .droppable-area {
+        width: 300px;
+        height: 300px;
+        background-color: #f8f9fa;
+        border: 2px dashed #007bff;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .dropped-item {
+        margin: 5px;
+    }
+</style>
+</head>
+<body>
+
+<div class="draggable-item" id="item1">
+    <img src="https://via.placeholder.com/150" alt="Item 1">
+    <p>Item 1</p>
+</div>
+
+<div class="draggable-item" id="item2">
+    <img src="https://via.placeholder.com/150" alt="Item 2">
+    <p>Item 2</p>
+</div>
+
+<div class="draggable-item" id="item3">
+    <img src="https://via.placeholder.com/150" alt="Item 3">
+    <p>Item 3</p>
+</div>
+
+<div class="droppable-area" id="drop-area">
+    Drop Here
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Make items draggable
+        $(".draggable-item").draggable({
+            revert: "invalid", // Item will revert to its original position if not dropped on a valid droppable
+            cursor: "move", // Change cursor appearance while dragging
+            zIndex: 1000,
+            opacity: 0.7
+        });
+
+        // Make droppable area accept draggable items
+        $("#drop-area").droppable({
+            accept: ".draggable-item", // Only accept elements with class "draggable-item"
+            drop: function(event, ui) {
+                var droppedItem = ui.draggable.clone();
+                droppedItem.addClass("dropped-item");
+                $(this).append(droppedItem); // Append a clone of the draggable item to the droppable area
+                ui.helper.remove(); // Remove the original draggable item
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
